@@ -1,0 +1,230 @@
+/*style.css*/
+:root {
+    --bg-color: #0f0c29;
+    --fg-color: #e0e0e0;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --primary-color: #4a90e2;
+    --primary-hover: #5aa1f9;
+    --secondary-color: rgba(255, 255, 255, 0.2);
+    --secondary-hover: rgba(255, 255, 255, 0.3);
+    --danger-color: #e94b3c;
+    --danger-hover: #f06a5d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-color);
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: var(--fg-color);
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* --- Glassmorphism Container --- */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    border-bottom: none;
+    background: none;
+    box-shadow: none;
+}
+
+header #status-message {
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+/* --- Layout --- */
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Input Section --- */
+#drop-zone {
+    border: 2px dashed var(--glass-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#drop-zone.dragover {
+    background-color: var(--glass-bg);
+}
+
+#drop-zone p {
+    margin: 0.5rem 0;
+}
+
+#file-input {
+    display: none;
+}
+
+.live-record {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+#timer {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    width: 60px;
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+.btn-primary:disabled {
+    background-color: #555;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--fg-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover);
+}
+
+#record-btn.recording {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+#record-btn.recording:hover {
+    background-color: var(--danger-hover);
+}
+
+
+/* --- Control & Results Section --- */
+#waveform, #spectrogram {
+    width: 100%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+/* Wavesurfer specific selector */
+wave {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.control-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results-section {
+    text-align: center;
+}
+
+#results-content {
+    width: 100%;
+}
+
+#predicted-genre {
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+#chart-container {
+    width: 100%;
+    min-height: 300px;
+}
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Loader Spinner --- */
+.loader {
+    border: 8px solid var(--glass-bg);
+    border-top: 8px solid var(--primary-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
